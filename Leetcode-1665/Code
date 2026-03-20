@@ -1,0 +1,9 @@
+class Solution:
+    def minimumEffort(self, tasks: list[list[int]]) -> int:
+        tasks.sort(key=lambda x: x[1] - x[0], reverse=True)
+        curr = 0
+        energy = 0
+        for actual, mini in tasks:
+            energy = max(energy, mini + curr)
+            curr += actual
+        return energy
