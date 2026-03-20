@@ -1,0 +1,14 @@
+class Solution:
+    def minimumSize(self, nums, maxOperations):
+        left = 1
+        right = max(nums)
+        while left < right:
+            mid = (left + right) // 2
+            op=0
+            for num in nums:
+                op += (num - 1) // mid
+            if op > maxOperations:
+                left = mid + 1
+            else:
+                right = mid
+        return left
